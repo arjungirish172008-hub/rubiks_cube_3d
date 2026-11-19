@@ -1,0 +1,21 @@
+{
+  "name": "rubiks-cube-learning-game",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "canvas-confetti": "^1.9.4",
+    "cubejs": "^1.2.0",
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.11",
+    "vitest": "^2.1.8"
+  }
+}

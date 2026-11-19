@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D Rubik's Cube Learning Game</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Main 3D Canvas -->
+    <canvas id="webgl-canvas"></canvas>
+
+    <!-- Mini 3D Orientation Gizmo -->
+    <div id="gizmo-container" title="Click faces to view">
+      <canvas id="gizmo-canvas"></canvas>
+      <div class="gizmo-label">Orientation</div>
+    </div>
+
+    <!-- UI Overlay -->
+    <div class="ui-overlay">
+      <!-- Header -->
+      <header class="app-header">
+        <div class="app-title-group">
+          <h1>
+            Rubik's 3D
+            <span class="cube-badge">3×3×3</span>
+          </h1>
+          <div class="app-subtitle">Interactive Speedcube & Solver</div>
+        </div>
+        <div class="header-actions">
+          <button id="btn-sound-toggle" class="btn btn-icon" title="Toggle Sound">🔊</button>
+          <button id="btn-help-toggle" class="btn btn-icon" title="Help & Controls">❓</button>
+        </div>
+      </header>
+
+      <!-- Left Sidebar: Camera Views & Controls -->
+      <aside class="sidebar-left" id="sidebar-left">
+        <!-- ViewPanel injected here -->
+      </aside>
+
+      <!-- Right Sidebar: Solver, Hints & Stats -->
+      <aside class="sidebar-right" id="sidebar-right">
+        <!-- Panels injected here in subsequent stages -->
+      </aside>
+
+      <!-- Bottom instruction toast -->
+      <div class="instruction-toast" id="instruction-toast">
+        <span>💡 Left-drag to orbit camera • Scroll to zoom • Click face buttons to inspect</span>
+      </div>
+    </div>
+
+    <!-- Help & Controls Modal -->
+    <div class="modal-overlay" id="help-modal">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h2 class="modal-title">How to Play & Controls</h2>
+          <button class="modal-close" id="modal-close">&times;</button>
+        </div>
+        <div class="modal-content">
+          <p>Master the Rubik's Cube with 3D controls, standard notation, and a real Kociemba two-phase solver.</p>
+          
+          <h3 style="margin-top: 16px; margin-bottom: 8px;">Camera Navigation</h3>
+          <table>
+            <tr><th>Action</th><th>Control</th></tr>
+            <tr><td>Rotate View</td><td>Left Click + Drag on background</td></tr>
+            <tr><td>Zoom</td><td>Mouse Scroll Wheel / Pinch</td></tr>
+            <tr><td>Face Views</td><td>Click Front, Back, Left, Right, Top, Bottom buttons</td></tr>
+            <tr><td>Reset Camera</td><td>Click "Reset View"</td></tr>
+          </table>
+
+          <h3 style="margin-top: 16px; margin-bottom: 8px;">Western Color Scheme</h3>
+          <table>
+            <tr><th>Face</th><th>Color</th><th>Axis</th></tr>
+            <tr><td><span class="key-badge">U</span> Up</td><td>White</td><td>+Y</td></tr>
+            <tr><td><span class="key-badge">D</span> Down</td><td>Yellow</td><td>-Y</td></tr>
+            <tr><td><span class="key-badge">F</span> Front</td><td>Green</td><td>+Z</td></tr>
+            <tr><td><span class="key-badge">B</span> Back</td><td>Blue</td><td>-Z</td></tr>
+            <tr><td><span class="key-badge">L</span> Left</td><td>Orange</td><td>-X</td></tr>
+            <tr><td><span class="key-badge">R</span> Right</td><td>Red</td><td>+X</td></tr>
+          </table>
+
+          <h3 style="margin-top: 16px; margin-bottom: 8px;">Keyboard Shortcuts</h3>
+          <table>
+            <tr><th>Turn</th><th>Key</th><th>Description</th></tr>
+            <tr><td>Clockwise</td><td><span class="key-badge">U</span> <span class="key-badge">D</span> <span class="key-badge">L</span> <span class="key-badge">R</span> <span class="key-badge">F</span> <span class="key-badge">B</span></td><td>90° Clockwise turn</td></tr>
+            <tr><td>Counter-Clockwise</td><td><span class="key-badge">Shift</span> + Letter</td><td>90° Counter-Clockwise (U', R', etc.)</td></tr>
+            <tr><td>Half Turn (180°)</td><td><span class="key-badge">Alt</span> + Letter</td><td>180° Turn (U2, R2, etc.)</td></tr>
+            <tr><td>Undo Move</td><td><span class="key-badge">Ctrl/Cmd + Z</span></td><td>Undo previous turn</td></tr>
+            <tr><td>Redo Move</td><td><span class="key-badge">Ctrl/Cmd + Y</span></td><td>Redo undone turn</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
